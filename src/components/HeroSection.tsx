@@ -29,7 +29,7 @@ export default function HeroSection({
                 <div className="space-y-4">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                     Hi, I'm Pros —{" "}
-                    <span className="text-primary">Senior Frontend Engineer</span>
+                    <span className="text-primary">Senior Software Engineer</span>
                   </h1>
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                     Building scalable UI architectures and driving end-to-end quality 
@@ -63,7 +63,7 @@ export default function HeroSection({
                   <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                     <Image
                       src={profileImageUrl}
-                      alt="Pros - Senior Frontend Engineer"
+                      alt="Pros - Senior Software Engineer"
                       fill
                       className="object-cover"
                       priority
