@@ -25,17 +25,20 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 ## 🚀 Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/pros-website.git
    cd pros-website
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    ```
@@ -45,18 +48,21 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 
 ## 📁 Project Structure
 
+```
 src/
-├── app/ # Next.js app router
-├── components/ # React components
-│ ├── ui/ # shadcn/ui components
-│ ├── HeroSection.tsx
-│ ├── AboutSection.tsx
-│ ├── ExperienceSection.tsx
-│ ├── ContactSection.tsx
-│ ├── Navigation.tsx
-│ └── LoadingOverlay.tsx
-├── data/ # Static data
-└── lib/ # Utilities
+├── app/                 # Next.js app router
+├── components/          # React components
+│   ├── ui/              # shadcn/ui components
+│   ├── HeroSection.tsx
+│   ├── AboutSection.tsx
+│   ├── CompanyExperienceCard.tsx
+│   ├── ContactSection.tsx
+│   ├── Navigation.tsx
+│   ├── LoadingOverlay.tsx
+│   └── ThemeProvider.tsx
+├── data/                # Static data
+└── lib/                 # Utilities
+```
 
 ## 🎨 Customization
 
@@ -74,7 +80,7 @@ src/
 
 ## 🚀 Deployment
 
-The easiest way to deploy is using [Vercel](https://vercel.com):
+Using [Vercel](https://vercel.com).
 
 ## 📄 License
 
