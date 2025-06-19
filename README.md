@@ -11,6 +11,7 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 - **Interactive Elements** - Rotating skill badges, smooth scrolling navigation
 - **Loading Overlay** - Custom animated loading screen
 - **Accessibility** - Semantic HTML and ARIA labels throughout
+- **Analytics** - Google Analytics 4 integration for tracking
 
 ## 🛠️ Tech Stack
 
@@ -20,6 +21,7 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 - **Animations**: Framer Motion
 - **UI Components**: shadcn/ui
 - **Icons**: Lucide React
+- **Analytics**: Google Analytics 4
 - **Deployment**: Vercel
 
 ## 🚀 Getting Started
@@ -37,13 +39,24 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
    npm install
    ```
 
-3. **Run the development server**
+3. **Set up Google Analytics 4 (Optional)**
+
+   Create a `.env.local` file in the root directory and add your GA4 measurement ID:
+
+   ```bash
+   # Google Analytics 4
+   NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+   ```
+
+   Replace `G-XXXXXXXXXX` with your actual Google Analytics 4 measurement ID.
+
+4. **Run the development server**
 
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📁 Project Structure
@@ -62,6 +75,8 @@ src/
 │   └── ThemeProvider.tsx
 ├── data/                # Static data
 └── lib/                 # Utilities
+    ├── utils.ts
+    └── analytics.ts     # GA4 utilities and tracking functions
 ```
 
 ## 🎨 Customization

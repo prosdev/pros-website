@@ -3,6 +3,7 @@ import { Inter, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,6 +32,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -40,6 +43,7 @@ export default function RootLayout({
           <Navigation />
           <main className="pt-16">{children}</main>
         </ThemeProvider>
+        {gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
     </html>
   );
