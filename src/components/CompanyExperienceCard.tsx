@@ -1,24 +1,23 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
-import { TrendingUp, MapPin, Calendar } from "lucide-react"
-import Image from "next/image"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { MapPin, Calendar } from "lucide-react";
+import Image from "next/image";
 
 interface JobRole {
-  title: string
-  dates: string
-  bullets: string[]
+  title: string;
+  dates: string;
+  bullets: string[];
 }
 
 interface CompanyExperienceCardProps {
-  company: string
-  location: string
-  duration: string
-  roles: JobRole[]
-  logo?: string
-  className?: string
+  company: string;
+  location: string;
+  duration: string;
+  roles: JobRole[];
+  logo?: string;
+  className?: string;
 }
 
 export default function CompanyExperienceCard({
@@ -27,10 +26,15 @@ export default function CompanyExperienceCard({
   duration,
   roles,
   logo,
-  className
+  className,
 }: CompanyExperienceCardProps) {
   return (
-    <Card className={cn("border border-border/50 hover:border-border transition-colors duration-200 hover:shadow-md", className)}>
+    <Card
+      className={cn(
+        "border border-border/50 hover:border-border transition-colors duration-200 hover:shadow-md",
+        className
+      )}
+    >
       <CardHeader className="pb-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div className="space-y-1">
@@ -63,7 +67,7 @@ export default function CompanyExperienceCard({
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent>
         <div className="space-y-8">
           {roles.map((role, index) => (
@@ -79,12 +83,6 @@ export default function CompanyExperienceCard({
                       <h3 className="text-lg md:text-xl font-semibold text-foreground">
                         {role.title}
                       </h3>
-                      {index === 0 && (
-                        <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
-                          <TrendingUp className="w-3 h-3 mr-1" />
-                          Promoted
-                        </Badge>
-                      )}
                     </div>
                     <div className="text-sm text-muted-foreground font-medium bg-muted/50 px-3 py-1 rounded-full self-start sm:self-auto">
                       {role.dates}
@@ -96,7 +94,7 @@ export default function CompanyExperienceCard({
               {/* Role Bullets */}
               <ul className="space-y-3 mb-6 ml-6">
                 {role.bullets.map((bullet, bulletIndex) => (
-                  <li 
+                  <li
                     key={bulletIndex}
                     className="flex items-start gap-3 text-muted-foreground leading-relaxed"
                   >
@@ -117,5 +115,5 @@ export default function CompanyExperienceCard({
         </div>
       </CardContent>
     </Card>
-  )
-} 
+  );
+}
