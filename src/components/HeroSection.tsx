@@ -28,7 +28,7 @@ export default function HeroSection({
               <div className="space-y-6">
                 <div className="space-y-4">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                    Hi, I'm Pros —{" "}
+                    Hi, I&apos;m Pros —{" "}
                     <span className="text-primary">Senior Software Engineer</span>
                   </h1>
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">

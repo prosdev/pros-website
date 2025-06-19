@@ -1,15 +1,20 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { cn } from "@/lib/utils"
-import { Menu, Sun, Moon, ChevronDown } from "lucide-react"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { Menu, Sun, Moon } from "lucide-react";
 
 interface NavigationProps {
-  className?: string
+  className?: string;
 }
 
 const navigationItems = [
@@ -17,62 +22,64 @@ const navigationItems = [
   { name: "About", href: "#about" },
   { name: "Work", href: "#work" },
   { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" }
-]
+  { name: "Contact", href: "#contact" },
+];
 
 export default function Navigation({ className }: NavigationProps) {
-  const [isDark, setIsDark] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isDark, setIsDark] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Initialize dark mode from localStorage
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains('dark')
-    setIsDark(isDarkMode)
-  }, [])
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    setIsDark(isDarkMode);
+  }, []);
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+      setIsScrolled(window.scrollY > 10);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Toggle dark mode
   const toggleDarkMode = () => {
-    const newDarkMode = !isDark
-    setIsDark(newDarkMode)
-    
+    const newDarkMode = !isDark;
+    setIsDark(newDarkMode);
+
     if (newDarkMode) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
-  }
+  };
 
   // Smooth scroll to section
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
+    const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
+        behavior: "smooth",
+        block: "start",
+      });
     }
-  }
+  };
 
   return (
-    <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled 
-        ? "bg-background/80 backdrop-blur-md border-b border-border/50" 
-        : "bg-transparent",
-      className
-    )}>
+    <nav
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border/50"
+          : "bg-transparent",
+        className
+      )}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
@@ -157,5 +164,5 @@ export default function Navigation({ className }: NavigationProps) {
         </div>
       </div>
     </nav>
-  )
-} 
+  );
+}

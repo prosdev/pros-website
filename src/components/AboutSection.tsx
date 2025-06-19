@@ -68,15 +68,15 @@ export default function AboutSection({ className }: AboutSectionProps) {
             {/* Professional Summary */}
             <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed">
               <p className="text-muted-foreground">
-                Hi, I'm Pros! I'm a Senior Software Engineer with 9+ years of
+                Hi, I&apos;m Pros! I&apos;m a Senior Software Engineer with 9+ years of
                 experience designing and building scalable, user-focused
-                frontend applications using React and TypeScript. I'm deeply
+                frontend applications using React and TypeScript. I&apos;m deeply
                 committed to quality and automation, especially through
                 comprehensive end-to-end testing strategies that ensure
                 reliable, robust software.
               </p>
               <p className="text-muted-foreground">
-                Throughout my career, I've had the privilege of mentoring
+                Throughout my career, I&apos;ve had the privilege of mentoring
                 engineers across distributed teams and collaborating closely
                 with cross-functional partners to align technical solutions with
                 business goals. I believe that great software comes from
@@ -84,7 +84,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
                 shared understanding.
               </p>
               <p className="text-muted-foreground">
-                When I'm not coding, you'll find me traveling and discovering
+                When I&apos;m not coding, you&apos;ll find me traveling and discovering
                 new foods. After college, I spent about three years teaching
                 English in South Korea, where I developed a love for backpacking
                 through Southeast Asia during summers and winters. These

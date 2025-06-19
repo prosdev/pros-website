@@ -39,7 +39,7 @@ export default function ContactSection({
               Get In Touch
             </CardTitle>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-              I'm always open to discussing new opportunities, interesting projects, 
+              I&apos;m always open to discussing new opportunities, interesting projects, 
               or just having a chat about technology and software development.
             </p>
           </CardHeader>
