@@ -51,20 +51,3 @@ export const workExperience: Experience[] = [
     ],
   },
 ];
-
-// Instructions for updating your work experience:
-/*
-1. Replace the company names, titles, and dates with your actual information
-2. Update the bullet points with your specific achievements and responsibilities
-3. Add or remove experience entries as needed
-4. Make sure each bullet point starts with a strong action verb
-5. Include quantifiable achievements where possible (percentages, numbers, metrics)
-6. Focus on impact and results rather than just responsibilities
-7. Use consistent formatting and tone throughout
-
-Example structure for each bullet point:
-- "Action verb + what you did + impact/result"
-- "Led team initiative resulting in X% improvement"
-- "Built system that served X users"
-- "Reduced process time by X%"
-*/
