@@ -12,6 +12,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { Menu, Sun, Moon } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 interface NavigationProps {
   className?: string;
@@ -26,14 +27,10 @@ const navigationItems = [
 ];
 
 export default function Navigation({ className }: NavigationProps) {
-  const [isDark, setIsDark] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Initialize dark mode from localStorage
-  useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkMode);
-  }, []);
+  // Always call useTheme to maintain hook order
+  const { theme, toggleTheme } = useTheme();
 
   // Handle scroll effect
   useEffect(() => {
@@ -44,20 +41,6 @@ export default function Navigation({ className }: NavigationProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    const newDarkMode = !isDark;
-    setIsDark(newDarkMode);
-
-    if (newDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
 
   // Smooth scroll to section
   const scrollToSection = (href: string) => {
@@ -110,11 +93,11 @@ export default function Navigation({ className }: NavigationProps) {
             <Button
               variant="ghost"
               size="icon"
-              onClick={toggleDarkMode}
+              onClick={toggleTheme}
               className="ml-4"
               aria-label="Toggle dark mode"
             >
-              {isDark ? (
+              {theme === "dark" ? (
                 <Sun className="h-5 w-5" />
               ) : (
                 <Moon className="h-5 w-5" />
@@ -128,10 +111,10 @@ export default function Navigation({ className }: NavigationProps) {
             <Button
               variant="ghost"
               size="icon"
-              onClick={toggleDarkMode}
+              onClick={toggleTheme}
               aria-label="Toggle dark mode"
             >
-              {isDark ? (
+              {theme === "dark" ? (
                 <Sun className="h-5 w-5" />
               ) : (
                 <Moon className="h-5 w-5" />

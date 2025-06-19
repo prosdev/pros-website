@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
+import Navigation from "@/components/Navigation";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,7 +22,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Pros - Senior Frontend Engineer",
-  description: "Portfolio of Pros, a Senior Software Engineer with expertise in React, TypeScript, and scalable frontend applications.",
+  description:
+    "Portfolio of Pros, a Senior Software Engineer with expertise in React, TypeScript, and scalable frontend applications.",
 };
 
 export default function RootLayout({
@@ -35,7 +37,8 @@ export default function RootLayout({
         className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          {children}
+          <Navigation />
+          <main className="pt-16">{children}</main>
         </ThemeProvider>
       </body>
     </html>
