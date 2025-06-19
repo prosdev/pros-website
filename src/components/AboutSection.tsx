@@ -1,14 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import {
   CloudIcon,
   PaletteIcon,
   Users,
   Code2Icon,
-  FileStackIcon,
   TestTubeDiagonalIcon,
   WrenchIcon,
+  SquareLibraryIcon,
 } from "lucide-react";
 
 interface AboutSectionProps {
@@ -29,7 +30,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
     },
     {
       name: "Frameworks",
-      icon: FileStackIcon,
+      icon: SquareLibraryIcon,
       skills: ["React", "Ember", "NodeJS", "NextJS"],
     },
     {
@@ -40,7 +41,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
     {
       name: "Cloud",
       icon: CloudIcon,
-      skills: ["AWS", "GCP"],
+      skills: ["AWS", "GCP", "Vercel", "Contentstack"],
     },
     {
       name: "Tools",
@@ -55,7 +56,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
   ];
 
   return (
-    <section className={cn("py-16 md:py-24", className)}>
+    <section className={cn("py-12 md:py-16", className)}>
       <div className="container mx-auto px-4">
         <Card className="border-0 shadow-none bg-transparent">
           <CardHeader className="text-center pb-8">
@@ -112,13 +113,19 @@ export default function AboutSection({ className }: AboutSectionProps) {
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {category.skills.map((skill) => (
-                          <Badge
+                          <motion.div
                             key={skill}
-                            variant="secondary"
-                            className="text-sm px-3 py-1 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
+                            whileHover={{ rotate: 360 }}
+                            transition={{ duration: 0.6, ease: "easeInOut" }}
+                            className="inline-block"
                           >
-                            {skill}
-                          </Badge>
+                            <Badge
+                              variant="secondary"
+                              className="text-sm px-3 py-1 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors cursor-pointer"
+                            >
+                              {skill}
+                            </Badge>
+                          </motion.div>
                         ))}
                       </div>
                     </div>

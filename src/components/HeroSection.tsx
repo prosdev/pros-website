@@ -19,7 +19,7 @@ export default function HeroSection({
   onGetInTouch,
 }: HeroSectionProps) {
   return (
-    <section className={cn("py-16 md:py-24", className)}>
+    <section className={cn("py-12 md:py-16", className)}>
       <div className="container mx-auto px-4">
         <Card className="border-0 shadow-none bg-transparent">
           <CardContent className="p-0">

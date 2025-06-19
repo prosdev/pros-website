@@ -1,13 +1,26 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Layout from "@/components/Layout"
 import HeroSection from "@/components/HeroSection"
 import AboutSection from "@/components/AboutSection"
 import CompanyExperienceCard from "@/components/CompanyExperienceCard"
 import ContactSection from "@/components/ContactSection"
+import LoadingOverlay from "@/components/LoadingOverlay"
 import Image from "next/image"
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate initial page loading
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   const handleViewResume = () => {
     // Create a link element to trigger download
     const link = document.createElement('a')
@@ -75,118 +88,126 @@ export default function Home() {
   ]
 
   return (
-    <Layout>
-      {/* Hero Section */}
-      <section id="home">
-        <HeroSection 
-          profileImageUrl="/profile.png"
-          onViewResume={handleViewResume}
-          onGetInTouch={handleGetInTouch}
-        />
-      </section>
+    <>
+      <LoadingOverlay 
+        isLoading={isLoading}
+        duration={2500}
+        onComplete={() => console.log("Page loaded successfully!")}
+      />
+      
+      <Layout>
+        {/* Hero Section */}
+        <section id="home">
+          <HeroSection 
+            profileImageUrl="/profile.png"
+            onViewResume={handleViewResume}
+            onGetInTouch={handleGetInTouch}
+          />
+        </section>
 
-      {/* About Section */}
-      <section id="about">
-        <AboutSection />
-      </section>
+        {/* About Section */}
+        <section id="about">
+          <AboutSection />
+        </section>
 
-      {/* Work Experience Section */}
-      <section id="work" className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Work Experience
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              My professional journey in software engineering and team leadership
-            </p>
-          </div>
+        {/* Work Experience Section */}
+        <section id="work" className="">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Work Experience
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                My professional journey in software engineering and team leadership
+              </p>
+            </div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
-            {/* Lytics Company Experience Card */}
-            <CompanyExperienceCard
-              company="Lytics"
-              location="Portland, OR"
-              duration="7 yrs 7 mos"
-              roles={lyticsRoles}
-              logo="/lytics-logo.jpg"
-            />
+            <div className="max-w-4xl mx-auto space-y-6">
+              {/* Lytics Company Experience Card */}
+              <CompanyExperienceCard
+                company="Lytics"
+                location="Portland, OR"
+                duration="7 yrs 7 mos"
+                roles={lyticsRoles}
+                logo="/lytics-logo.jpg"
+              />
 
-            {/* Other experiences using regular cards */}
-            {otherExperiences.map((experience) => (
-              <div key={experience.id} className="border border-border/50 rounded-lg p-6 hover:border-border transition-colors duration-200 hover:shadow-md">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-                  <div className="flex items-center gap-3">
-                    {experience.company === "Healthsparq" && (
-                      <div className="relative w-8 h-8 flex-shrink-0 rounded-full overflow-hidden">
-                        <Image
-                          src="/healthsparq-logo.png"
-                          alt="Healthsparq logo"
-                          fill
-                          className="object-contain"
-                          sizes="32px"
-                        />
+              {/* Other experiences using regular cards */}
+              {otherExperiences.map((experience) => (
+                <div key={experience.id} className="border border-border/50 rounded-lg p-6 hover:border-border transition-colors duration-200 hover:shadow-md">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                    <div className="flex items-center gap-3">
+                      {experience.company === "Healthsparq" && (
+                        <div className="relative w-8 h-8 flex-shrink-0 rounded-full overflow-hidden">
+                          <Image
+                            src="/healthsparq-logo.png"
+                            alt="Healthsparq logo"
+                            fill
+                            className="object-contain"
+                            sizes="32px"
+                          />
+                        </div>
+                      )}
+                      {experience.company === "Nike" && (
+                        <div className="relative w-8 h-8 flex-shrink-0 rounded-full overflow-hidden">
+                          <Image
+                            src="/nike-logo.png"
+                            alt="Nike logo"
+                            fill
+                            className="object-contain"
+                            sizes="32px"
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-semibold text-foreground">
+                          {experience.title}
+                        </h3>
+                        <p className="text-lg font-medium text-primary mt-1">
+                          {experience.company}
+                        </p>
                       </div>
-                    )}
-                    {experience.company === "Nike" && (
-                      <div className="relative w-8 h-8 flex-shrink-0 rounded-full overflow-hidden">
-                        <Image
-                          src="/nike-logo.png"
-                          alt="Nike logo"
-                          fill
-                          className="object-contain"
-                          sizes="32px"
-                        />
-                      </div>
-                    )}
-                    <div>
-                      <h3 className="text-xl md:text-2xl font-semibold text-foreground">
-                        {experience.title}
-                      </h3>
-                      <p className="text-lg font-medium text-primary mt-1">
-                        {experience.company}
-                      </p>
+                    </div>
+                    <div className="text-sm text-muted-foreground font-medium bg-muted/50 px-3 py-1 rounded-full self-start sm:self-auto">
+                      {experience.dates}
                     </div>
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium bg-muted/50 px-3 py-1 rounded-full self-start sm:self-auto">
-                    {experience.dates}
-                  </div>
+                  <ul className="space-y-3">
+                    {experience.bullets.map((bullet, index) => (
+                      <li 
+                        key={index}
+                        className="flex items-start gap-3 text-muted-foreground leading-relaxed"
+                      >
+                        <span className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2.5" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-3">
-                  {experience.bullets.map((bullet, index) => (
-                    <li 
-                      key={index}
-                      className="flex items-start gap-3 text-muted-foreground leading-relaxed"
-                    >
-                      <span className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2.5" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Projects Section - Placeholder */}
-      <section id="projects" className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Projects
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Coming soon - showcasing my latest projects and contributions
-            </p>
+        {/* Projects Section - Placeholder */}
+        <section id="projects" className="py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Projects
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Coming soon - showcasing my latest projects and contributions
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section id="contact">
-        <ContactSection />
-      </section>
-    </Layout>
+        {/* Contact Section */}
+        <section id="contact">
+          <ContactSection />
+        </section>
+      </Layout>
+    </>
   )
 }
