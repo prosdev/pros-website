@@ -91,7 +91,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
       opacity: 0,
       transition: {
         duration: 1.5,
-        delay: i * 0.3,
+        delay: i * 0.2,
         ease: "easeOut" as const,
       },
     }),
@@ -104,7 +104,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
       transition: {
         delay: 0.5, // Wait for ripple to complete
         duration: 1.5,
-        staggerChildren: 1,
+        staggerChildren: 0.7,
         delayChildren: 0.1,
       },
     },

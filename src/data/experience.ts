@@ -14,7 +14,7 @@ export const workExperience: Experience[] = [
     company: "Lytics",
     dates: "Feb 2022 - Present",
     bullets: [
-      "Drive Playwright end-to-end testing initiative across U.S. and India engineering teams to improve platform reliability and reduce UI regressions. Define and enforce coding and testing best practices to ensure consistency, scalability, and maintainability across regions. Built a NextJS dashboard powered by Firestore to provide insights on E2E test runs.",
+      "Driving Playwright E2E testing initiative across global teams, improving platform reliability and reducing UI regressions for Lytics data products",
       "Manage weekly triage to prioritize and resolve customer-facing GitHub issues, reducing backlog from 500+ to fewer than 10 open issues requiring developer attention and minimizing delays in user feedback resolution.",
       "Led UI development and implementation of Cloud Connect, a reverse ETL solution that enhanced customer segmentation and generated over $700k in upsells and renewals for key enterprise clients.",
       "Spearheaded restructuring of platform navigation, unifying multiple products into a seamless user experience.",
@@ -26,7 +26,7 @@ export const workExperience: Experience[] = [
     company: "Lytics",
     dates: "June 2017 - Jan 2022",
     bullets: [
-      "Collaborated with Product and Data Science teams to deliver Audience Discovery Report, Content Recommendations, and improved customer data insights.",
+      "Delivered the UI for Audience Discovery and Content Affinity features with cross-functional teams, helping customers unlock actionable segmentation insights and improve content targeting effectiveness",
       "Streamlined new engineer onboarding through active mentorship, enabling core product contributions within 15 days and halving average onboarding time.",
       "Provided technical and career mentorship to junior engineers via structured pair programming, onboarding support, and goal-setting conversations.",
     ],

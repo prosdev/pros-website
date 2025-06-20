@@ -50,9 +50,7 @@ export default function Home() {
       dates: "Feb 2022 - Present",
       bullets: [
         "Led Playwright E2E testing initiative across global teams, improving platform reliability and reducing UI regressions",
-        "Reduced GitHub issue backlog from 500+ to fewer than 10 open issues requiring developer attention",
-        "Built NextJS dashboard powered by Firestore to provide insights on E2E test runs",
-        "Generated over $700k in upsells and renewals through Cloud Connect reverse ETL solution",
+        "Reduced the GitHub issue backlog from 500+ to fewer than 10 open issues requiring developer triage, streamlining customer feedback workflows and improving response time.",
         "Spearheaded platform navigation restructuring, unifying multiple products into seamless user experience",
       ],
     },
@@ -60,8 +58,8 @@ export default function Home() {
       title: "Software Engineer",
       dates: "June 2017 - Jan 2022",
       bullets: [
-        "Delivered Audience Discovery Report and Content Recommendations features with Product and Data Science teams",
-        "Streamlined engineer onboarding, enabling core product contributions within 15 days",
+        "Delivered the UI for Audience Discovery and Content Affinity features with cross-functional teams, helping customers unlock actionable segmentation insights and improve content targeting effectiveness",
+        "Streamlined engineer onboarding, enabling core product contributions within a week",
         "Provided technical mentorship to junior engineers through pair programming and goal-setting",
       ],
     },
