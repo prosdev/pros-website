@@ -26,6 +26,10 @@ export const metadata: Metadata = {
   title: "Pros - Senior Frontend Engineer",
   description:
     "Portfolio of Pros, a Senior Software Engineer with expertise in React, TypeScript, and scalable frontend applications.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({
