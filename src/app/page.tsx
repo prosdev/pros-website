@@ -9,6 +9,10 @@ import ContactSection from "@/components/ContactSection";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { intervalToDuration } from "date-fns";
+import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/data/projects";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -100,7 +104,7 @@ export default function Home() {
         {/* Hero Section */}
         <section id="home">
           <HeroSection
-            profileImageUrl="/profile.png"
+            profileImageUrl="https://firebasestorage.googleapis.com/v0/b/devbypros.firebasestorage.app/o/portfolio%2Fprofile.png?alt=media&token=fe0f3bc7-2573-4039-8cfe-9bb472c1183c"
             onViewResume={handleViewResume}
             onGetInTouch={handleGetInTouch}
           />
@@ -137,79 +141,107 @@ export default function Home() {
               <CompanyExperienceCard
                 company="Lytics"
                 location="Portland, OR"
-                duration="7 yrs 7 mos"
+                duration={(() => {
+                  const duration = intervalToDuration({
+                    start: new Date("2017-06-01"),
+                    end: new Date(),
+                  });
+                  const years = duration.years || 0;
+                  const months = duration.months || 0;
+                  return `${years} years, ${months} months`;
+                })()}
                 roles={lyticsRoles}
                 logo="/lytics-logo.jpg"
               />
 
-              {/* Other experiences using regular cards */}
+              {/* Other experiences using shadcn/ui cards */}
               {otherExperiences.map((experience) => (
-                <div
+                <Card
                   key={experience.id}
-                  className="border border-border/50 rounded-lg p-6 hover:border-border transition-colors duration-200 hover:shadow-md"
+                  className="border border-border/50 hover:border-border transition-colors duration-200 hover:shadow-md"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-                    <div className="flex items-center gap-3">
-                      {experience.company === "Healthsparq" && (
-                        <div className="relative w-8 h-8 flex-shrink-0 rounded-full overflow-hidden">
-                          <Image
-                            src="/healthsparq-logo.png"
-                            alt="Healthsparq logo"
-                            fill
-                            className="object-contain"
-                            sizes="32px"
-                          />
+                  <CardHeader className="pb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <div className="flex items-center gap-3">
+                        {experience.company === "Healthsparq" && (
+                          <div className="relative w-8 h-8 flex-shrink-0 rounded-full overflow-hidden">
+                            <Image
+                              src="/healthsparq-logo.png"
+                              alt="Healthsparq logo"
+                              fill
+                              className="object-contain"
+                              sizes="32px"
+                            />
+                          </div>
+                        )}
+                        {experience.company === "Nike" && (
+                          <div className="relative w-8 h-8 flex-shrink-0 rounded-full overflow-hidden">
+                            <Image
+                              src="/nike-logo.png"
+                              alt="Nike logo"
+                              fill
+                              className="object-contain"
+                              sizes="32px"
+                            />
+                          </div>
+                        )}
+                        <div>
+                          <CardTitle className="text-xl md:text-2xl font-semibold text-foreground">
+                            {experience.title}
+                          </CardTitle>
+                          <p className="text-lg font-medium text-primary mt-1">
+                            {experience.company}
+                          </p>
                         </div>
-                      )}
-                      {experience.company === "Nike" && (
-                        <div className="relative w-8 h-8 flex-shrink-0 rounded-full overflow-hidden">
-                          <Image
-                            src="/nike-logo.png"
-                            alt="Nike logo"
-                            fill
-                            className="object-contain"
-                            sizes="32px"
-                          />
-                        </div>
-                      )}
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-semibold text-foreground">
-                          {experience.title}
-                        </h3>
-                        <p className="text-lg font-medium text-primary mt-1">
-                          {experience.company}
-                        </p>
+                      </div>
+                      <div className="text-sm text-muted-foreground font-medium bg-muted/50 px-3 py-1 rounded-full self-start sm:self-auto">
+                        {experience.dates}
                       </div>
                     </div>
-                    <div className="text-sm text-muted-foreground font-medium bg-muted/50 px-3 py-1 rounded-full self-start sm:self-auto">
-                      {experience.dates}
-                    </div>
-                  </div>
-                  <ul className="space-y-3">
-                    {experience.bullets.map((bullet, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-3 text-muted-foreground leading-relaxed"
-                      >
-                        <span className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2.5" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {experience.bullets.map((bullet, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-3 text-muted-foreground leading-relaxed"
+                        >
+                          <span className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2.5" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Projects Section - Placeholder */}
+        {/* Projects Section */}
         <section id="projects" className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <div className="text-center">
+            <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Projects</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Coming soon - showcasing my latest projects and contributions
+                A showcase of my latest projects and technical contributions
               </p>
+            </div>
+            
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {projects.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    imageUrl={project.imageUrl}
+                    title={project.title}
+                    summary={project.summary}
+                    tags={project.tags}
+                    link={project.link}
+                    comingSoon={project.comingSoon}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
