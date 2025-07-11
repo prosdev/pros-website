@@ -1,6 +1,6 @@
 export interface Project {
   id: string;
-  imageUrl: string;
+  imageUrls?: string[];
   title: string;
   summary: string;
   tags: string[];
@@ -11,21 +11,24 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "playwright-dashboard",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/devbypros.firebasestorage.app/o/portfolio%2Fautomation-dashboard.png?alt=media&token=c14c9b93-434b-438a-8482-deedc9b3c41e",
+    imageUrls: [
+      "https://firebasestorage.googleapis.com/v0/b/devbypros.firebasestorage.app/o/portfolio%2Fkpi-dashboard.png?alt=media&token=0e526753-c958-4f6d-8e78-62e7ac4d4dc0",
+      "https://firebasestorage.googleapis.com/v0/b/devbypros.firebasestorage.app/o/portfolio%2Fautomation-roadmap.png?alt=media&token=ac738f5a-b374-441a-ab5a-ba6c1db7340f",
+      "https://firebasestorage.googleapis.com/v0/b/devbypros.firebasestorage.app/o/portfolio%2Flatest-cases.png?alt=media&token=44466992-fb39-463c-a109-7835f3ef33ae",
+    ],
     title: "E2E Automation Dashboard",
     summary:
-      "A Next.js dashboard powered by Firestore to visualize E2E test runs and suite health.",
+      "A real-time observability dashboard for critical user journeys, powered by Firestore and Playwright test analytics.",
     tags: [
       "Next.js",
       "Firestore",
       "Playwright",
-      "Testing",
-      "Context API",
+      "CI/CD",
       "TailwindCSS",
-      "shadcn/ui",
+      "Testing Strategy",
+      "Engineering Observability",
     ],
     link: "/portfolio/playwright-dashboard",
-    comingSoon: true,
+    comingSoon: false,
   },
 ];

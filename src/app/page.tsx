@@ -29,8 +29,8 @@ export default function Home() {
   const handleViewResume = () => {
     // Create a link element to trigger download
     const link = document.createElement("a");
-    link.href = "/SENG_SoftwareEngineer.pdf";
-    link.download = "SENG_SoftwareEngineer.pdf";
+    link.href = "https://firebasestorage.googleapis.com/v0/b/devbypros.firebasestorage.app/o/portfolio%2FSENG_SoftwareEngineer_RESUME.pdf?alt=media&token=e42b4175-b9e8-4476-8c76-65d7644d1313";
+    link.download = "SENG_SoftwareEngineer_RESUME.pdf";
     link.target = "_blank";
     document.body.appendChild(link);
     link.click();
@@ -233,7 +233,7 @@ export default function Home() {
                 {projects.map((project) => (
                   <ProjectCard
                     key={project.id}
-                    imageUrl={project.imageUrl}
+                    imageUrls={project.imageUrls}
                     title={project.title}
                     summary={project.summary}
                     tags={project.tags}
